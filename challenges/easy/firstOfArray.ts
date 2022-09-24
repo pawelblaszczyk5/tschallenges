@@ -22,7 +22,10 @@
 
 /* _____________ Your Code Here _____________ */
 
-type First<Array extends any[]> = Array extends [infer FirstElement, ...any]
+type First<ArrayType extends any[]> = ArrayType extends [
+  infer FirstElement,
+  ...any
+]
   ? FirstElement
   : never;
 
