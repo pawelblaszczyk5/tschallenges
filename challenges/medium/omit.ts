@@ -31,14 +31,12 @@
 /* _____________ Your Code Here _____________ */
 
 type MyOmit<
-  ObjectToOmit,
-  KeysToOmit extends keyof ObjectToOmit,
-  ObjectKeys extends keyof ObjectToOmit = keyof ObjectToOmit,
-  FinalKeys extends keyof ObjectToOmit = ObjectKeys extends KeysToOmit
-    ? never
-    : ObjectKeys
+  ObjectToOmit extends Record<string, any>,
+  KeysToOmit extends keyof ObjectToOmit
 > = {
-  [key in FinalKeys]: ObjectToOmit[key];
+  [Key in keyof ObjectToOmit as Key extends KeysToOmit
+    ? never
+    : Key]: ObjectToOmit[Key];
 };
 
 /* _____________ Test Cases _____________ */
