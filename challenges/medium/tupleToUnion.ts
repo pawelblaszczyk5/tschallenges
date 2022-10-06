@@ -18,21 +18,17 @@
   > View on GitHub: https://tsch.js.org/10
 */
 
-
 /* _____________ Your Code Here _____________ */
 
-type TupleToUnion<Tuple extends ReadonlyArray<any>> = Tuple[number]
-
+type TupleToUnion<Tuple extends ReadonlyArray<any>> = Tuple[number];
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from "@type-challenges/utils";
 
 type cases = [
-  Expect<Equal<TupleToUnion<[123, '456', true]>, 123 | '456' | true>>,
-  Expect<Equal<TupleToUnion<[123]>, 123>>,
-]
-
-
+  Expect<Equal<TupleToUnion<[123, "456", true]>, 123 | "456" | true>>,
+  Expect<Equal<TupleToUnion<[123]>, 123>>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -40,4 +36,3 @@ type cases = [
   > View solutions: https://tsch.js.org/10/solutions
   > More Challenges: https://tsch.js.org
 */
-
