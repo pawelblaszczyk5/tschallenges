@@ -26,8 +26,6 @@ type MyCapitalize<StringToCapitalize extends string> =
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
 
-type x = MyCapitalize<"foobar">;
-
 type cases = [
   Expect<Equal<MyCapitalize<"foobar">, "Foobar">>,
   Expect<Equal<MyCapitalize<"FOOBAR">, "FOOBAR">>,
