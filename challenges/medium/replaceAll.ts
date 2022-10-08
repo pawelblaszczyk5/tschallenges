@@ -31,8 +31,6 @@ type ReplaceAll<
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
 
-type x = ReplaceAll<"foobarfoobar", "ob", "b">;
-
 type cases = [
   Expect<Equal<ReplaceAll<"foobar", "bar", "foo">, "foofoo">>,
   Expect<Equal<ReplaceAll<"foobar", "bag", "foo">, "foobar">>,
