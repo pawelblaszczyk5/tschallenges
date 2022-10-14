@@ -19,8 +19,14 @@
 
 /* _____________ Your Code Here _____________ */
 
-type AppendToObject<T extends Record<string, any>, U extends string, V> = {
-  [Key in keyof T | U]: U extends Key ? V : T[Key];
+type AppendToObject<
+  ObjectToModify extends Record<string, any>,
+  NewKey extends string,
+  NewKeyType
+> = {
+  [Key in keyof ObjectToModify | NewKey]: NewKey extends Key
+    ? NewKeyType
+    : ObjectToModify[Key];
 };
 
 /* _____________ Test Cases _____________ */
