@@ -24,7 +24,7 @@
 /* _____________ Your Code Here _____________ */
 
 // That's kinda wizardy
-type IsNever<T> = [T] extends [never] ? true : false;
+type IsNever<TypeToCheck> = [TypeToCheck] extends [never] ? true : false;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
