@@ -20,16 +20,14 @@
 
 /* _____________ Your Code Here _____________ */
 
-// It's kinda hacky but it's honest work
-type Permutation<T, Copy = T> = [T] extends [never]
-  ? []
-  : Copy extends Copy
-  ? [Copy, ...Permutation<Exclude<T, Copy>>]
-  : [];
-type IsUnion<T> = Permutation<T>["length"] extends 1
+type IsUnion<PossibleUnion, Copy = PossibleUnion> = [PossibleUnion] extends [
+  never
+]
   ? false
-  : Permutation<T>["length"] extends 0
-  ? false
+  : Copy extends PossibleUnion
+  ? Exclude<PossibleUnion, Copy> extends never
+    ? false
+    : true
   : true;
 
 /* _____________ Test Cases _____________ */
