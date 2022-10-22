@@ -32,25 +32,14 @@
 
 /* _____________ Your Code Here _____________ */
 
-type Sign = "-" | "+";
-type Percent = "%";
-type Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
-
-// Kinda hacky and not working correctly even though it passes tests
-type PercentageParser<
-  StringToParse extends string,
-  SignPart extends string = "",
-  DigitPart extends string = "",
-  PercentPart extends string = ""
-> = StringToParse extends `${infer Head}${infer Rest}`
-  ? Head extends Sign
-    ? PercentageParser<Rest, `${SignPart}${Head}`, DigitPart, PercentPart>
-    : Head extends Digit
-    ? PercentageParser<Rest, SignPart, `${DigitPart}${Head}`, PercentPart>
-    : Head extends Percent
-    ? PercentageParser<Rest, SignPart, DigitPart, `${Head}${PercentPart}`>
-    : [SignPart, DigitPart, PercentPart]
-  : [SignPart, DigitPart, PercentPart];
+type PercentageParser<StringToParse extends string> =
+  StringToParse extends `${infer Sign extends "+" | "-"}${infer Rest}`
+    ? Rest extends `${infer F}%`
+      ? [Sign, F, "%"]
+      : [Sign, Rest, ""]
+    : StringToParse extends `${infer Digits}%`
+    ? ["", Digits, "%"]
+    : ["", StringToParse, ""];
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -67,8 +56,6 @@ type Case8 = ["-", "1", ""];
 type Case9 = ["", "", "%"];
 type Case10 = ["", "1", ""];
 type Case11 = ["", "100", ""];
-
-type test = PercentageParser<"%">;
 
 type cases = [
   Expect<Equal<PercentageParser<"">, Case0>>,
