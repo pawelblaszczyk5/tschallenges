@@ -45,8 +45,8 @@ type StripLeadingZeros<StringToTransform extends string> =
     : StringToTransform;
 
 type LastTwoLetters<StringToPick extends string> =
-  StringToPick extends `${infer FirstChar}${infer SecondChar}${infer ThirdChar}${infer FourthChar}`
-    ? LastTwoLetters<`${SecondChar}${ThirdChar}${FourthChar}`>
+  StringToPick extends `${infer FirstChar}${infer SecondChar}${infer ThirdChar}${infer Rest}`
+    ? LastTwoLetters<`${SecondChar}${ThirdChar}${Rest}`>
     : StringToPick extends `${infer Head}${infer Tail1 extends Digit}${infer Tail2 extends Digit}`
     ? [Tail1, Tail2]
     : StringToPick extends `${infer Tail1 extends Digit}${infer Tail2 extends Digit}`
