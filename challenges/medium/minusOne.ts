@@ -78,7 +78,9 @@ type MinusOnePrivate<
     >
   : StripLeadingZeros<CurrentResult>;
 
-type MinusOne<N extends number> = StringToNumber<MinusOnePrivate<`${N}`>>;
+export type MinusOne<N extends number> = StringToNumber<
+  MinusOnePrivate<`${N}`>
+>;
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
