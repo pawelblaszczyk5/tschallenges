@@ -39,8 +39,9 @@ type ConstructArrayOfNumbers<
 
 type NumberRange<
   Start extends number,
-  End extends number
-> = ConstructArrayOfNumbers<Start, End>[number];
+  End extends number,
+  Result extends Array<any> = ConstructArrayOfNumbers<Start, End>
+> = Result[number];
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
