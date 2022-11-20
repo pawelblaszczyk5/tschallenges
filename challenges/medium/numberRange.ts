@@ -23,21 +23,18 @@ type GetArrayOfGivenLength<
   ? Result
   : GetArrayOfGivenLength<Length, [...Result, any]>;
 
-type AddNumbers<First extends number, Second extends number> = [
-  ...GetArrayOfGivenLength<First>,
-  ...GetArrayOfGivenLength<Second>
-]["length"];
-
 type ConstructArrayOfNumbers<
   Start extends number,
   End extends number,
-  Result extends Array<number> = []
+  Result extends Array<number> = [],
+  Accumulator extends Array<any> = GetArrayOfGivenLength<Start>
 > = End extends Result[number]
   ? Result
   : ConstructArrayOfNumbers<
       Start,
       End,
-      [...Result, AddNumbers<Start, Result["length"]>]
+      [...Result, Accumulator["length"]],
+      [...Accumulator, any]
     >;
 
 type NumberRange<
