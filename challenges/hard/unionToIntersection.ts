@@ -21,8 +21,8 @@
 // your answers
 type UnionToIntersection<Union> = (
   Union extends unknown ? (arg: Union) => unknown : never
-) extends (arg: infer P) => unknown
-  ? P
+) extends (arg: infer Intersection) => unknown
+  ? Intersection
   : never;
 
 /* _____________ Test Cases _____________ */
