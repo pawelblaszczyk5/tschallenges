@@ -37,8 +37,6 @@ interface Model {
   locations: string[] | null;
 }
 
-type x = ObjectEntries<Partial<Model>>;
-
 type ModelEntries =
   | ["name", string]
   | ["age", number]
