@@ -18,7 +18,9 @@
 
 /* _____________ Your Code Here _____________ */
 
-type GetRequired<ObjectToRetrieveRequired extends Record<string, unknown>> = {
+export type GetRequired<
+  ObjectToRetrieveRequired extends Record<string, unknown>
+> = {
   [Key in keyof ObjectToRetrieveRequired as Pick<
     ObjectToRetrieveRequired,
     Key
