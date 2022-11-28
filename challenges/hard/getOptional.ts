@@ -18,7 +18,7 @@
 
 /* _____________ Your Code Here _____________ */
 
-type GetOptional<ObjectToRetrieveOptional> = {
+type GetOptional<ObjectToRetrieveOptional extends Record<string, unknown>> = {
   [Key in keyof ObjectToRetrieveOptional as Partial<
     Pick<ObjectToRetrieveOptional, Key>
   > extends Pick<ObjectToRetrieveOptional, Key>
